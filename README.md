@@ -1,5 +1,5 @@
 # PGE-Net
-A Physics-Informed Gravity Evolution Network Guided by Uncertainty Decoupling for Complex Water Precise Extraction
+A Physics-Informed Gravity Evolution Network Guided by Uncertainty Decoupling for Precise Water Extraction in Complex Water Areas
 
 ## Overview
 PGE-Net is an end-to-end semantic segmentation network for precise water
@@ -18,7 +18,7 @@ stages. TPUD estimates spatial uncertainty and decouples ambiguous features
 into boundary and main-body branches. DGEM further refines uncertain water
 boundaries through a physics-informed gravity evolution process.
 
-This repository provides the model implementation, configuration files,
+This repository provides the model code, configuration files,
 training and inference scripts, visualization tools, and experimental
 configuration used in this work. The implementation is developed on top of
 the MMSegmentation framework.
@@ -78,23 +78,40 @@ environment. Please install the versions listed in `requirements.txt`.
 The installation of PyTorch and MMCV may depend on the local CUDA version.
 Please select compatible packages according to the official PyTorch and
 OpenMMLab installation instructions.
-The experiments were conducted with:
 
+The code was developed and tested with the following environment:
 - Python: 3.8.20
 - PyTorch: 2.0.0+cu118
 - MMCV: 2.0.0
 - MMEngine: 0.10.7
 - MMSegmentation: 1.2.2
+- GPU: NVIDIA RTX 4070S
+- Operating system: Windows 11
 
 
-# Repository Structure
+## Repository Structure
+```text
 PGE-Net/
 ├── configs/
-├── models/
-│   │   ├── backbones/  
+│   └── segformer/
+│       └── gid5_segformer_mit_b0_qiepian_base_nfim_ufda_dgem_pdes.py
+├── mmseg/
+│   ├── models/
+│   │   ├── backbones/
+│   │   │   └── mit_nfim.py
 │   │   └── decode_heads/
+│   │       └── ufda_dgem_segformer_head_pdes.py
+│   └── ...
 ├── tools/
+│   ├── train.py
+│   ├── test.py
+│   ├── inference.py
+│   └── visualize.py
 ├── data/
+│   └── README.md
 ├── checkpoints/
+│   └── README.md
 ├── requirements.txt
+├── LICENSE
+├── NOTICE
 └── README.md
