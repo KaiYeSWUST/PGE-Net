@@ -1,3 +1,4 @@
+# The UFDA class in the code corresponds to the TPUD module mentioned in the paper and description.
 import math
 import torch
 import torch.nn as nn
