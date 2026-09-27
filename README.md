@@ -69,8 +69,8 @@ the MMSegmentation framework.
 The detailed architecture is described in the associated paper. The
 implementation is organized into the following components:
 
-- SegFormer backbone (MIT+NFIM);
-- Customized decoder head (SegFormer_Head+TPUD+DGEM).
+- **Backbone:** A customized SegFormer MIT backbone with NFIM.
+- **Decoder head:** A customized SegFormer decoder head containing TPUD and DGEM.
 
 ## Runtime Environment
 The code was developed and tested with a specific MMSegmentation
@@ -85,7 +85,7 @@ The code was developed and tested with the following environment:
 - MMCV: 2.0.0
 - MMEngine: 0.10.7
 - MMSegmentation: 1.2.2
-- GPU: NVIDIA RTX 4070S
+- GPU: NVIDIA RTX 4070 Super
 - Operating system: Windows 11
 
 
@@ -98,22 +98,24 @@ PGE-Net/
 ├── mmseg/
 │   ├── models/
 │   │   ├── backbones/
+│   │   │   └── mit.py
 │   │   │   └── mit_nfim.py
 │   │   └── decode_heads/
+│   │   │   └── segformer_head.py
 │   │       └── ufda_dgem_segformer_head_pdes.py
 │   └── ...
 ├── tools/
 │   ├── train.py
-│   ├── test.py
-│   ├── inference.py
+│   ├── gid5_visual_add_nfim_ufda_dgem_map_PDES.py
+│   ├── 
 │   └── visualize.py
 ├── data/
 │   └── train/
-│   │   └──images
-│   │   └──masks
+│   │   └── images
+│   │   └── masks
 │   └── val/
-│   │   └──images
-│   │   └──masks
+│   │   └── images
+│   │   └── masks
 ├── checkpoints/
 │   └── README.md
 ├── requirements.txt
@@ -123,7 +125,7 @@ PGE-Net/
 ```
 
 ## Dataset
-Using the PGE-Net model, we have created the ZWD dataset for water body extraction and segmentation tasks.The dataset, including its description, download instructions, directory
+Using the PGE-Net model, we have created the ZWD dataset for water body extraction and segmentation tasks. The dataset, including its description, download instructions, directory
 structure, annotation details, and license, is available at https://github.com/SWUSTKAI/ZWD-DATASET.
 
 ## Training
@@ -134,14 +136,41 @@ python tools/train.py configs/segformer/gid5_segformer_mit_b0_qiepian_base_nfim_
 Note that this instruction needs to be executed within the **complete mmsegmentation** framework. The link for mmseg is https://github.com/open-mmlab/mmsegmentation
 
 ## Inference and Visualization
+After training, use the trained checkpoint to generate segmentation predictions and visualization results.
+```bash
+python tools/gid5_visual_add_nfim_ufda_dgem_map_PDES.py
+```
+The paths of files such as "config", "checkpoint", "input image", "ground truth" and "output path" should be filled in the code.
 
+Arguments:
+- CONFIG_FILE: Path to the model configuration file.
+- CHECKPOINT_FILE: Path to the trained PGE-Net checkpoint.
+- INPUT_IMG_PATH: Path to the input image or image directory.
+- GT_IMG_PATH: Path to the ground truth image.
+- OUTPUT_PATH: Directory used to save the prediction and visualization results.
 
 ## Citation
-
+The citation information will be added after the associated paper is officially published.
 
 ## Acknowledgements
-
+We thank the High-resolution Earth Observation System Sichuan Data & Application Center for providing the basic remote-sensing imagery. We also thank the Sichuan Province Aba Ecological Environment Monitoring Center Station for its assistance during the field investigation.
 
 ## License
+This repository contains components distributed under different licenses.
+1. Original PGE-Net code and newly developed PGE-Net components
+   Unless otherwise stated, the original PGE-Net code and newly developed
+   PGE-Net components are distributed under the PGE-Net Non-Commercial
+   Research License. See LICENSE.
+2. MMSegmentation and other third-party components
+   The original MMSegmentation components and other third-party components
+   remain subject to their respective original licenses. In particular,
+   MMSegmentation is distributed under the Apache License, Version 2.0.
+   See LICENSE-APACHE-2.0 and NOTICE.
+3. ZWD dataset
+   The ZWD dataset is not covered by the software license in this
+   repository. It is distributed under a separate dataset license specified
+   in the ZWD dataset repository:https://github.com/SWUSTKAI/ZWD-DATASET
 
+In case of conflict, the license applicable to the relevant file or
+component takes precedence.
 
