@@ -108,10 +108,40 @@ PGE-Net/
 │   ├── inference.py
 │   └── visualize.py
 ├── data/
-│   └── README.md
+│   └── train/
+│   │   └──images
+│   │   └──masks
+│   └── val/
+│   │   └──images
+│   │   └──masks
 ├── checkpoints/
 │   └── README.md
 ├── requirements.txt
 ├── LICENSE
 ├── NOTICE
 └── README.md
+```
+
+## Dataset
+Using the PGE-Net model, we have created the ZWD dataset for water body extraction and segmentation tasks.The dataset, including its description, download instructions, directory
+structure, annotation details, and license, is available at https://github.com/SWUSTKAI/ZWD-DATASET.
+
+## Training
+Run the following command from the repository root:
+```bash
+python tools/train.py configs/segformer/gid5_segformer_mit_b0_qiepian_base_nfim_ufda_dgem_pdes.py
+```
+Note that this instruction needs to be executed within the **complete mmsegmentation** framework. The link for mmseg is https://github.com/open-mmlab/mmsegmentation
+
+## Inference and Visualization
+
+
+## Citation
+
+
+## Acknowledgements
+
+
+## License
+
+
