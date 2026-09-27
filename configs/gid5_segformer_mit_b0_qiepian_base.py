@@ -33,7 +33,6 @@ crop_size = (512, 512)
 data_preprocessor = dict(
     type='SegDataPreProcessor',
     bgr_to_rgb=False,
-    #影像波段统计值计算，可以使用J:\YEKAI_project_code\HUAHU_Water_SEGFORMER\tools\image_std_value_cal.py工具计算
     mean=[27.27, 20.267, 15.328, 60.288],
     std=[8.251, 6.722, 5.916, 16.695],
     pad_val=0,
