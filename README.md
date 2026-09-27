@@ -70,7 +70,22 @@ The detailed architecture is described in the associated paper. The
 implementation is organized into the following components:
 
 - SegFormer backbone (MIT+NFIM);
-- Customized decoder head (TPUD+DGEM).
+- Customized decoder head (SegFormer_Head+TPUD+DGEM).
+
+## Runtime Environment
+The code was developed and tested with a specific MMSegmentation
+environment. Please install the versions listed in `requirements.txt`.
+The installation of PyTorch and MMCV may depend on the local CUDA version.
+Please select compatible packages according to the official PyTorch and
+OpenMMLab installation instructions.
+The experiments were conducted with:
+
+- Python: 3.8.20
+- PyTorch: 2.0.0+cu118
+- MMCV: 2.0.0
+- MMEngine: 0.10.7
+- MMSegmentation: 1.2.2
+
 
 # Repository Structure
 PGE-Net/
