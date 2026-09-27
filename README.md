@@ -93,35 +93,27 @@ The code was developed and tested with the following environment:
 ```text
 PGE-Net/
 ├── configs/
-│   └── segformer/
-│       └── gid5_segformer_mit_b0_qiepian_base_nfim_ufda_dgem_pdes.py
+│   └── gid5_segformer_mit_b0_qiepian_base.py
+│   └── gid5_segformer_mit_b0_qiepian_base_nfim_ufda_dgem_pdes.py
 ├── mmseg/
 │   ├── models/
 │   │   ├── backbones/
+│   │   │   └── _init_.py
 │   │   │   └── mit.py
 │   │   │   └── mit_nfim.py
 │   │   └── decode_heads/
+│   │   │   └── _init_.py
 │   │   │   └── segformer_head.py
 │   │       └── ufda_dgem_segformer_head_pdes.py
-│   └── ...
 ├── tools/
-│   ├── train.py
+│   ├── data_slice_tool.py
 │   ├── gid5_visual_add_nfim_ufda_dgem_map_PDES.py
-│   ├── 
-│   └── visualize.py
-├── data/
-│   └── train/
-│   │   └── images
-│   │   └── masks
-│   └── val/
-│   │   └── images
-│   │   └── masks
-├── checkpoints/
-│   └── README.md
-├── requirements.txt
+│   ├── image_std_value_cal.py
+│   └── test.py
+│   └── train.py
 ├── LICENSE
-├── NOTICE
 └── README.md
+├── requirements.txt
 ```
 
 ## Dataset
